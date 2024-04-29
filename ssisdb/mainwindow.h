@@ -40,25 +40,34 @@ public:
     QPushButton *EditButton;
     QPushButton *DeleteButton;
 
-    void setWidgetsEditable(bool editable);
+    void studentsEditable(bool editable);
+    void coursesEditable(bool editable);
 
 private slots:
     void on_savebutton_clicked();
     void on_editbutton_clicked();
     void on_reload_clicked();
     void on_addbutton_clicked();
-    void search();
-    void updateTables();
+    //void search();
+    //void updateTables();
     void updateStudentsTable();
-    void searchAndPopulateTables();
-    void on_searchstudent_clicked();
+    //void searchAndPopulateTables();
+    //void on_searchstudent_clicked();
     void on_searchbutton_clicked();
     void displayAllData();
     void populateTable(QTableWidget *tableWidget, QSqlQuery &query);
     void rowstudents(QTableWidgetItem *item);
     void rowcourses(QTableWidgetItem *item);
     void on_addcourse_clicked();
+    void on_deletebutton_clicked();
+    void on_tableWidget_itemSelectionChanged();
+    void on_editcourse_clicked();
+    void on_savecourse_clicked();
+    void on_deletecourse_clicked();
+    void editCourse(const QString& courseCode);
+    void callDatabase();
 
+    void on_code_textChanged(const QString &text);
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *model;
@@ -70,6 +79,8 @@ private:
     void searchInTable(QTableWidget *tableWidget, const QString &searchText);
     void resetTableVisibility(QTableWidget *tableWidget);
     void updateCoursesTable();
+    QString originalCourseCode;
+    void updateOriginalCourseCode();
 
 };
 #endif // MAINWINDOW_H
